@@ -27,7 +27,7 @@ post.Path("/").Get(
     
     // Define all available headers
     swag.Headers(
-        swag.Header("X-Rate-Limit-Limit").Description("The number of allowed requests in the current period").Type("integer"),
+        swag.Header("X-Rate-Limit-Limit").Description("The number of allowed requests in the current period").Type(swag.Integer),
     ),
 
     // provide all available responses
