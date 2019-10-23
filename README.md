@@ -39,8 +39,10 @@ post.Path("/").Get(
     )
 ).Post(
     // now define what http.POST accepts
-    swag.Accepts(CreatePost{}, func(r swag.Returner) {
-    	r.Field("title").Required(true)
+    swag.Accepts(CreatePost{}, func(a swag.Acceptor) {
+    	
+    	// if you use pointer, required would be set automatically to false
+    	a.Field("title").Required(false)
     }),
     
     // Define all available headers
