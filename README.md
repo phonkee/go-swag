@@ -5,7 +5,10 @@ Simple swagger interface
 ```go
 
 // instantiate new swag
-s := swag.New()
+s := swag.New(func(s swag.Swagger) {
+	s.Title("hello world")
+	s.Description("Awesome api")
+})
 
 // create api path prefix
 api := s.PathPrefix("/api/v1")
