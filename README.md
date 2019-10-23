@@ -32,7 +32,7 @@ post.Path("/").Get(
         swag.Response(http.StatusOk, func(r swag.Responder) {
             r.Description("list of posts")
             r.Returns([]Post{})	
-        })
+        }),
         swag.Response(http.StatusNotFound, func(r swag.Responder) {
             r.Description("no posts found")	
         }),
@@ -57,7 +57,7 @@ post.Path("/").Get(
         	r.Returns(Post{})
         }),
         swag.Response(http.StatusBadRequest),
-    )
+    ),
 )
 
 // new path, variable `id` should be automatically added
@@ -68,7 +68,7 @@ post.Path("/{id}").Get(
         	r.Returns(Post{})
         }),
         swag.Response(http.StatusNotFound),
-    ) 	
+    ),
 ).Post(
 	// define what we accept (simple)
     swag.Accepts(UpdatePost{}),
