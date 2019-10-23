@@ -18,6 +18,8 @@ post := api.PathPrefix("/post")
 
 // define post endpoints
 post.Path("/").Get(
+	
+	// prepare all available responses
     swag.Responses(
         swag.Response(http.StatusOk, func(r swag.Responder) {
             r.Description("list of posts")
