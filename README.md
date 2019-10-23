@@ -11,10 +11,10 @@ s := swag.New(func(s swag.Swagger) {
 })
 
 // create api path prefix
-api := s.PathPrefix("/api/v1")
+api := s.Path("/api/v1")
 
 // post api
-post := api.PathPrefix("/post")
+post := api.Path("/post")
 
 // define post endpoints
 post.Path("/").Get(
