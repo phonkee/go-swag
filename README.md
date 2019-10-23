@@ -53,7 +53,15 @@ post.Path("/").Get(
 )
 
 // new path, variable `id` should be automatically added
-post.Path("/{id}").Post(
+post.Path("/{id}").Get( 
+    // provide all available responses
+    swag.Responses(
+        swag.Response(http.StatusOK, func(r swag.Responder) {
+        	r.Returns(Post{})
+        }),
+        swag.Response(http.StatusNotFound),
+    ) 	
+).Post(
 	// define what we accept (simple)
     swag.Accepts(UpdatePost{}),
     
