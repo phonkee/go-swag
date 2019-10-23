@@ -13,7 +13,7 @@ s := swag.New(func(s swag.Swagger) {
     s.Headers(
         swag.Header("X-Rate-Limit-Limit", func(h swag.Headerer) {
             h.Description("The number of allowed requests in the current period")
-            h.Type(swag.Integer)	
+            h.Type(swag.TypeInteger)	
         })
     ),
 })
@@ -63,7 +63,7 @@ post.Path("/").Get(
 // new path, variable `id` should be automatically added
 post.Path("/{id}", func(p swag.Pather) {
 	// we can define for all actions that id is an integer (yay)
-	p.PathArgument("id").Type(swag.Integer)
+	p.PathArgument("id").Type(swag.TypeInteger)
 }).Get( 
     // provide all available responses
     swag.Responses(
