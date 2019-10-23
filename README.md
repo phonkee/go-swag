@@ -16,8 +16,13 @@ post := api.PathPrefix("/post")
 // define post endpoints
 post.Path("/").Get(
     swag.Responses(
-        swag.Response(http.StatusOk).Description("list of posts").Returns([]Post{}),
-        swag.Response(http.StatusNotFound).Description("no posts found"),
+        swag.Response(http.StatusOk, func(r swag.Responder) {
+            r.Description("list of posts")
+            r.Returns([]Post{})	
+        })
+        swag.Response(http.StatusNotFound, func(r swag.Responder) {
+            r.Description("no posts found")	
+        }),
     )
 ).Post(
     // now define what http.POST accepts
@@ -27,7 +32,10 @@ post.Path("/").Get(
     
     // Define all available headers
     swag.Headers(
-        swag.Header("X-Rate-Limit-Limit").Description("The number of allowed requests in the current period").Type(swag.Integer),
+        swag.Header("X-Rate-Limit-Limit", func(h swag.Headerer) {
+            h.Description("The number of allowed requests in the current period")
+            h.Type(swag.Integer)	
+        })
     ),
 
     // provide all available responses
@@ -44,10 +52,13 @@ post.Path("/{id}").Post(
     
     // define all responses
     swag.Responses(
-        swag.Response(http.StatusOK).Description("thank you").Returns(Post{}, func(r swag.Returner) {
-        	r.Inline()
+        swag.Response(http.StatusOK, func(r swag.Responder) {
+            r.Description("thank you")
+            r.Returns(Post{}).Inline()
         }),
-        swag.Response(http.StatusUnauthorized).Description("Please login"),
+        swag.Response(http.StatusUnauthorized, func(r swag.Responder) {
+            r.Description("Please login"),
+        }),
         swag.Response(http.StatusBadRequest),
     ),
 ).Delete(
