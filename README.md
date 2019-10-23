@@ -1,6 +1,6 @@
 # swag
 
-Simple swagger interface
+Simple swagger API.
 
 ```go
 
