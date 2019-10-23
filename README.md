@@ -97,4 +97,12 @@ post.Path("/{id}").Get(
     ),
 )
 
+// swagger `s` satisfies http.Handler so you can directly use it in http server
+// swagger `s` has Error method that returns error if something goes wrong
+
+// check for error (simplified)
+if err := s.Error(); err != nil {
+	panic(err)
+}
+
 ```
