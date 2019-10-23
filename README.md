@@ -62,6 +62,7 @@ post.Path("/").Get(
 
 // new path, variable `id` should be automatically added
 post.Path("/{id}", func(p swag.Pather) {
+	// we can define for all actions that id is an integer (yay)
 	p.PathArgument("id").Type(swag.Integer)
 }).Get( 
     // provide all available responses
