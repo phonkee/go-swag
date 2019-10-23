@@ -1,6 +1,6 @@
 # swag
 
-Simple swagger API.
+Simple swagger for APIs.
 
 ```go
 
@@ -107,5 +107,8 @@ post.Path("/{id}", func(p swag.Pather) {
 if err := s.Error(); err != nil {
 	panic(err)
 }
-
 ```
+
+# Author
+
+Peter Vrba <phonkee@phonkee.eu>
