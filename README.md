@@ -8,6 +8,14 @@ Simple swagger API.
 s := swag.New(func(s swag.Swagger) {
 	s.Title("hello world")
 	s.Description("Awesome api")
+
+    // Define all available headers
+    s.Headers(
+        swag.Header("X-Rate-Limit-Limit", func(h swag.Headerer) {
+            h.Description("The number of allowed requests in the current period")
+            h.Type(swag.Integer)	
+        })
+    ),
 })
 
 // create api path prefix
