@@ -74,7 +74,7 @@ post.Path("/{id}").Get(
     swag.Accepts(UpdatePost{}),
     
     // do not accept headers from top level
-    swag.Headers(swag.DeleteHeaders())
+    swag.Headers(swag.NoHeaders())
     
     // define all responses
     swag.Responses(
