@@ -5,12 +5,12 @@ Simple swagger for APIs.
 ```go
 
 // instantiate new swag
-s := swag.New(func(s swag.Swagger) {
-	s.Title("hello world")
-	s.Description("Awesome api")
+s := swag.New(func(sw swag.Swagger) {
+	sw.Title("hello world")
+	sw.Description("Awesome api")
 
     // Define all available headers
-    s.Headers(
+    sw.Headers(
         swag.Header("X-Rate-Limit-Limit", func(h swag.Headerer) {
             h.Description("The number of allowed requests in the current period")
             h.Type(swag.TypeInteger)	
