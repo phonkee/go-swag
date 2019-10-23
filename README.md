@@ -29,7 +29,7 @@ post.Path("/").Get(
     )
 ).Post(
     // now define what http.POST accepts
-    swag.Accepts(Post{}, func(r swag.Returner) {
+    swag.Accepts(CreatePost{}, func(r swag.Returner) {
     	r.Field("title").Required(true)
     }),
     
@@ -43,8 +43,10 @@ post.Path("/").Get(
 
     // provide all available responses
     swag.Responses(
-        swag.Response(http.StatusOK),
-        swag.Response(http.StatusNotFound),
+        swag.Response(http.StatusOK, func(r swag.Responder) {
+        	r.Returns(Post{})
+        }),
+        swag.Response(http.StatusBadRequest),
     )
 )
 
