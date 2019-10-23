@@ -73,6 +73,9 @@ post.Path("/{id}").Get(
 	// define what we accept (simple)
     swag.Accepts(UpdatePost{}),
     
+    // do not accept headers from top level
+    swag.Headers(swag.DeleteHeaders())
+    
     // define all responses
     swag.Responses(
         swag.Response(http.StatusOK, func(r swag.Responder) {
