@@ -54,7 +54,9 @@ post.Path("/{id}").Post(
     swag.Responses(
         swag.Response(http.StatusOK, func(r swag.Responder) {
             r.Description("thank you")
-            r.Returns(Post{}).Inline()
+            r.Returns(Post{}, func(r swag.Returner) {
+            	r.Inline()
+            })
         }),
         swag.Response(http.StatusUnauthorized, func(r swag.Responder) {
             r.Description("Please login"),
